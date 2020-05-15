@@ -1,5 +1,5 @@
 {
-    "name": "projeto/ecommerce",
+    "name": "pedrohenriqueribei/projeto-ecommerce",
     "authors": [
         {
             "name": "Pedro Henrique",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\hcodebr\\php-classes\\src"
+            "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
         }
     }
 }
