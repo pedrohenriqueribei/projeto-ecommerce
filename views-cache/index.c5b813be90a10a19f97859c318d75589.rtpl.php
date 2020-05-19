@@ -1,0 +1,1 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><h1>LOJA DE COMPRAS</h1>

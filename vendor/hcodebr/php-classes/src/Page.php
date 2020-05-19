@@ -22,7 +22,7 @@ class Page {
 			"debug"		=> false
 		);
 
-		Tpl::configure( $_SERVER );
+		Tpl::configure( $config );
 
 		$this->tpl = new Tpl();
 
