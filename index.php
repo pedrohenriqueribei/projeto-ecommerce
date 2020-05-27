@@ -1,9 +1,11 @@
 <?php 
 
+session_start();
 require_once("vendor/autoload.php");
 use \Slim\Slim;
 use \Hcode\Page;
 use \Hcode\PageAdmin;
+use \Hcode\Model\User; 
 
 $app = new Slim();
 
@@ -16,12 +18,48 @@ $app->get('/', function() {
 	$page->setTpl("index");
 });
 
+$app->get('/admin', function (){
 
-$app->get('/admin', function() {
-    
+	//User::verifyLogin();
+	
 	$page = new PageAdmin();
 
-	$page->setTpl("index");
+	$page->setTpl('index');
+});
+
+// PÁGINA DE LOGIN DO ADMINISTRADOR
+
+$app->get('/admin/login', function() {
+    
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
+	]);
+
+	$page->setTpl("login");
+});
+
+
+
+
+
+// ADMIN FAZER LOGIN
+$app->post('/admin/login', function() {
+
+	User::login($_POST["login"], $_POST["password"]);
+
+	header("Location: /admin");
+	exit;
+
+});
+
+// ADMIN FAZER LOGOUT
+$app->get('/admin/logout', function() {
+
+	User::logout();
+
+	header("Location: /admin/login");
+	exit;
 });
 
 $app->run();
